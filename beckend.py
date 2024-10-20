@@ -1,9 +1,5 @@
 import openai 
-
 import os
-
-from dotenv_vault import load_dotenv
-load_dotenv(dotenv_path=".env")
 
 key = os.getenv("API_KEY") # API key from OpenAI
 client = openai.OpenAI(api_key=key)
