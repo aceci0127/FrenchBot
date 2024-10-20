@@ -1,8 +1,16 @@
 import openai 
 import os
+import json
 
-key = os.getenv("API_KEY") # API key from OpenAI
-client = openai.OpenAI(api_key=key)
+# Function to load API key from the JSON file
+def load_api_key():
+    if os.path.exists("api_key.json"):
+        with open("api_key.json", "r") as file:
+            data = json.load(file)
+            return data.get("api_key", None)
+    return None
+
+client = openai.OpenAI(api_key=load_api_key())
 
 # Function to call the GPT model
 def perform_response(input):
